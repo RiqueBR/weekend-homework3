@@ -37,8 +37,8 @@ class Customer
     screenings.film_id = films.id INNER JOIN tickets ON
     tickets.screening_id = screenings.id WHERE customer_id = $1"
     values = [@id]
-    customers = SqlRunner.run(sql, values)
-    return result = customers.map { |customer_hash| Customer.new(customer_hash)}
+    films = SqlRunner.run(sql, values)
+    return result = films.map { |film_hash| Film.new(film_hash)}
   end
 
   def self.all
